@@ -1,0 +1,11 @@
+streamlit
+streamlit_lottie
+streamlit_option_menu
+numpy
+pandas
+opencv_python
+Pillow
+joblib
+requests
+scikit-learn==1.0.2
+streamlit_extras
