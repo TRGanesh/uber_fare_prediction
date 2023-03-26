@@ -28,8 +28,8 @@ streamlit_style = """
 st.markdown(streamlit_style, unsafe_allow_html=True)
 
 # LOADING THE SAVED -- MODEL,ONE-HOT ENCODER,SCALER
-loaded_model = pickle.load(open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/uber_fare_RFprediction_model.sav','rb'))
-loaded_scaler = pickle.load(open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/uber_fare_scaler.sav','rb'))
+loaded_model = pickle.load(open('uber_fare_RFprediction_model.sav','rb'))
+loaded_scaler = pickle.load(open('uber_fare_scaler.sav','rb'))
 
 # CREATING A FUNCTION THAT MAKES PREDICTION USING LOADED MODEL
 def uber_fare_predictor(data):
@@ -43,10 +43,10 @@ def main():
     def local_css(file_name):
         with open(file_name) as f:
             st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
-    local_css('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/style.css')
+    local_css('style.css')
 
 # CREATING NAVIGATION BAR WITH OPTION_MENU    
-selected = streamlit_option_menu.option_menu(menu_title=None,options=['About Data','Make Prediction'],icons=['activity','book'],menu_icon='list',default_index=1,orientation='horizontal',styles={
+selected = streamlit_option_menu.option_menu(menu_title=None,options=['About Data','Make Prediction'],icons=['activity','book'],menu_icon='list',default_index=0,orientation='horizontal',styles={
             "container": {"padding": "0!important", "background-color": "#white"},
             "icon": {"color": "yellow", "font-size": "25px"}, 
             "nav-link": {"font-size": "25px", "text-align": "middle", "margin":"0px", "--hover-color": "grey"},
@@ -55,13 +55,13 @@ selected = streamlit_option_menu.option_menu(menu_title=None,options=['About Dat
     
 # CREATING A PAGE TO GIVE INFORMATION ABOUT OUR PROJECT
 # LOADING DATASET WITH PANDAS
-df = pd.read_csv('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/uber.csv')
+df = pd.read_csv('uber.csv')
     
 # CREATING PAGE FOR DATA DESCRIPTION
 if selected=='About Data':
     st.write(' ')
     st.write(' ')
-    st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/uber_taxi_image.jpeg'),width=1100)
+    st.image(Image.open('uber_taxi_image.jpeg'),width=1100)
     # TITLE
     st.title(':blue[Uber Fare Dataset]')
     st.write('''The project is about on world's largest taxi company Uber inc. In this project, we're looking to predict the fare for their future transactional cases. Uber delivers service to lakhs of customers daily. Now it becomes really important to manage their data properly to come up with new business ideas to get best results. Eventually, it becomes really important to estimate the fare prices accurately.''')
@@ -89,22 +89,22 @@ if selected=='About Data':
         plot_1,plot_2 = st.columns((1,1))
         with plot_1:
             st.write(' ')
-            st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/dropoff_latitude_kdeplot.png'))
+            st.image(Image.open('dropoff_latitude_kdeplot.png'))
             st.markdown("<h1 style='text-align:center;font-size:20px '>Distribution Plot of Droppoff Latitude</h1>",unsafe_allow_html=True)
         with plot_2:
             st.write(' ')
-            st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/dropoff_longitude_kdeplot.png')) 
+            st.image(Image.open('dropoff_longitude_kdeplot.png')) 
             st.markdown("<h1 style='text-align:center;font-size:20px'>Distribution Plot of Droppoff Longitude</h1>",unsafe_allow_html=True)
     # CREATING CONTAINER WITH 2 COLUMNS FOR 2 DIFFERENT PLOTS
     with st.container():
         plot_1,plot_2 = st.columns((1,1))
         with plot_1:
             st.write(' ')
-            st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/pickup_latitude_kdeplot.png'))
+            st.image(Image.open('pickup_latitude_kdeplot.png'))
             st.markdown("<h1 style='text-align:center;font-size:20px'>Distribution Plot of Pickup Latitude</h1>",unsafe_allow_html=True)
         with plot_2:
             st.write(' ')
-            st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/pickup_longitude_kdeplot.png')) 
+            st.image(Image.open('pickup_longitude_kdeplot.png')) 
             st.markdown("<h1 style='text-align:center;font-size:20px'>Distribution Plot of Pickup Longitude</h1>",unsafe_allow_html=True)     
     st.write('- - -')        
     st.markdown("<h5 color:Blue;font-size:10px'>Inference from above distribution plots:</h5>",unsafe_allow_html=True)
@@ -151,7 +151,7 @@ if selected=='Make Prediction':
             st.write(' ');st.write(' ');st.write(' ')
             st.write(' ');st.write(' ');st.write(' ')
             st.write(' ');st.write(' ');st.write(' ')
-            st.image(Image.open('/Users/mac/Downloads/Model_Deployment_1/Uber_Streamlit_app/uber_taxi_image2.png.jpeg'))
+            st.image(Image.open('uber_taxi_image2.png.jpeg'))
         
         # GETTING DISTANCE USING LONGITUDES AND LATITUDES
         def dist(longitude1, latitude1, longitude2, latitude2):
