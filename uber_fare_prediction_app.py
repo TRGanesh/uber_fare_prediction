@@ -125,6 +125,8 @@ if selected=='About Data':
     st.markdown('- We compared metrics of Regression models using Error metrics like **Mean Absolute Error**,**Mean Squared Error**,**Root Mean Squared Error**.')
     st.markdown('- Finally,we selected best model with low error rates.')
     st.write('- - -')
+     st.write('You can see Python code for Machine Learning [Here](https://github.com/TRGanesh/penguins_classification1/blob/main/penguins_DTClassification.ipynb)')
+    st.write('You can see Python code for Streamlit web page [Here](https://github.com/TRGanesh/uber_fare_prediction/edit/main/uber_fare_prediction_app.py)')	
 
 st.markdown(''' <style> .font{font-size:30px;
             font-weight:bold;
